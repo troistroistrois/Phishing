@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Repérer un mail de phishing en 30 secondes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+:root{--navy:#1B2A49;--blue:#2F6FED;--yellow:#FFC145;--red:#E5484D;--green:#2BAE66;--bg:#F5F7FB;--card:#fff;--text:#1B2A49;--muted:#55627A;--line:#E3E8F2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F172A;--card:#1B2A49;--text:#F5F7FB;--muted:#B5C0D6;--line:#2C3E63}}
+:root[data-theme="dark"]{--bg:#0F172A;--card:#1B2A49;--text:#F5F7FB;--muted:#B5C0D6;--line:#2C3E63}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;margin:0}
+h1,h2,h3{font-family:Poppins,system-ui,sans-serif;color:var(--text)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:1rem;box-shadow:0 4px 18px rgba(27,42,73,.07)}
+.muted{color:var(--muted)}
+.hero{background:linear-gradient(135deg,#1B2A49,#2F6FED);color:#fff}
+.hero h1{color:#fff}
+.badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:.3rem .8rem;font-size:.85rem}
+.tag{display:inline-block;background:var(--blue);color:#fff;border-radius:999px;padding:.15rem .75rem;font-size:.8rem;font-weight:600}
+.rule{border-left:6px solid var(--yellow);background:var(--card);border-radius:.75rem;padding:1rem 1.25rem}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--text);border:2px solid var(--line);border-radius:.75rem;padding:.75rem 1rem;margin-top:.6rem;cursor:pointer;font:inherit}
+.opt:hover:not(:disabled){border-color:var(--blue)}
+.opt.ok{border-color:var(--green);background:rgba(43,174,102,.15)}
+.opt.ko{border-color:var(--red);background:rgba(229,72,77,.14)}
+.fb{margin-top:.8rem;padding:.8rem 1rem;border-radius:.75rem;font-weight:500;display:none}
+.fb.ok{display:block;background:rgba(43,174,102,.15);border:1px solid var(--green)}
+.fb.ko{display:block;background:rgba(229,72,77,.14);border:1px solid var(--red)}
+.btn{background:var(--blue);color:#fff;border:0;border-radius:.75rem;padding:.75rem 1.4rem;font-weight:600;cursor:pointer;font:inherit;font-weight:600}
+.btn:hover{filter:brightness(1.1)}
+details.card summary{cursor:pointer;list-style:none}
+details.card summary::-webkit-details-marker{display:none}
+.num{width:2.2rem;height:2.2rem;border-radius:50%;background:var(--blue);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:Poppins;font-weight:700;flex:none}
+.act{border-top:6px solid var(--blue)}
+.act.r{border-top-color:var(--red)}.act.y{border-top-color:var(--yellow)}.act.g{border-top-color:var(--green)}
+.check{width:1.3rem;height:1.3rem;accent-color:var(--green);flex:none}
+.printonly{display:none}
+@media print{.noprint{display:none!important}.printonly{display:block}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+
+<header class="hero noprint">
+  <div class="max-w-4xl mx-auto px-5 py-12 text-center">
+    <h1 class="text-3xl md:text-5xl font-bold leading-tight">Repérer un mail de phishing en 30 secondes</h1>
+    <p class="mt-4 text-lg opacity-90">Mini-formation express de 17 minutes conçue pour les particuliers et les indépendants.</p>
+    <div class="mt-6 flex flex-wrap justify-center gap-2">
+      <span class="badge">⏱️ 17 min</span>
+      <span class="badge">🛡️ Sources : Cybermalveillance.gouv.fr</span>
+      <span class="badge">🤖 Contenu et avatar assistés par IA</span>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-5 pb-16">
+
+  <section class="noprint -mt-8">
+    <div class="card overflow-hidden p-2">
+      <a href="https://www.youtube.com/watch?v=UUDUOr37VRA" target="_blank" rel="noopener" aria-label="Regarder la leçon vidéo sur YouTube (nouvel onglet)" style="position:relative;display:block;padding-top:56.25%;border-radius:.75rem;overflow:hidden;background:linear-gradient(135deg,#1B2A49,#2F6FED);text-decoration:none">
+        <span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem">
+          <span style="width:4.5rem;height:4.5rem;border-radius:50%;background:#fff;color:#2F6FED;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 6px 20px rgba(0,0,0,.25)">▶</span>
+          <strong style="font-family:Poppins,sans-serif;font-size:1.2rem;margin-top:1rem">Regarder la leçon vidéo</strong>
+          <span style="opacity:.85;font-size:.9rem;margin-top:.25rem">S’ouvre sur YouTube dans un nouvel onglet</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MODULE 1 -->
+  <section class="mt-12" id="module-1">
+    <span class="tag">Module 1 · ~5 min</span>
+    <h2 class="text-2xl md:text-3xl font-bold mt-2">Pourquoi ces faux mails marchent</h2>
+    <p class="mt-3">Un faux mail ne vous piège pas par la technique, mais en vous poussant à agir vite sans réfléchir. Le mécanisme tient en trois temps :</p>
+    <div class="grid md:grid-cols-3 gap-4 mt-4">
+      <div class="card p-5"><div class="text-2xl">🎭</div><h3 class="font-semibold mt-1">Une fausse identité</h3><p class="muted text-sm mt-1">Le fraudeur imite une banque, une administration ou un livreur : quelqu’un en qui vous avez confiance.</p></div>
+      <div class="card p-5"><div class="text-2xl">⏳</div><h3 class="font-semibold mt-1">Une urgence artificielle</h3><p class="muted text-sm mt-1">Compte bloqué, colis en attente : la pression est faite pour court-circuiter votre réflexion.</p></div>
+      <div class="card p-5"><div class="text-2xl">🪝</div><h3 class="font-semibold mt-1">Un faux site</h3><p class="muted text-sm mt-1">Le lien mène à une copie du vrai site, qui récupère vos identifiants ou votre carte.</p></div>
+    </div>
+    <div class="rule mt-5"><strong>Règle réflexe :</strong> « Dès qu’un mail vous presse, arrêtez-vous. La pression est le signal d’alarme. »</div>
+
+    <div class="card p-5 mt-5 quiz">
+      <p class="font-semibold">Quiz · Face à un message pressant qui vous menace de bloquer un compte, que faites-vous ?</p>
+      <button class="opt" data-ok="0" data-fb="Non : cliquer, c’est exactement ce que le fraudeur attend.">A. Je clique vite pour vérifier</button>
+      <button class="opt" data-ok="0" data-fb="Non : répondre confirme que votre adresse est active et vous garde dans le piège.">B. Je réponds au mail pour demander si c’est vrai</button>
+      <button class="opt" data-ok="1" data-fb="Bravo ! Ralentir casse le piège : sans urgence, il ne marche plus.">C. Je m’arrête et je ne clique pas</button>
+      <div class="fb" role="status"></div>
+    </div>
+  </section>
+
+  <!-- MODULE 2 -->
+  <section class="mt-14" id="module-2">
+    <span class="tag">Module 2 · ~6 min</span>
+    <h2 class="text-2xl md:text-3xl font-bold mt-2">Les 4 vérifications de 30 secondes</h2>
+    <p class="mt-3 muted">Touchez une carte pour voir l’astuce.</p>
+    <div class="grid md:grid-cols-2 gap-4 mt-4">
+      <details class="card p-5"><summary class="flex gap-3 items-start"><span class="num">1</span><span><strong class="text-lg">L’expéditeur</strong><br><span class="muted text-sm">Vérifiez l’adresse complète, pas seulement le nom affiché.</span></span></summary>
+        <p class="mt-3 text-sm">Exemple inventé de faux domaine : <code>service-livraison@colis-suivi-fr.com</code>. Rien à voir avec la vraie société.</p></details>
+      <details class="card p-5"><summary class="flex gap-3 items-start"><span class="num">2</span><span><strong class="text-lg">Le lien</strong><br><span class="muted text-sm">Survolez avec la souris, ou faites un appui long, sans cliquer.</span></span></summary>
+        <p class="mt-3 text-sm">L’adresse réelle s’affiche. Elle doit correspondre exactement au site attendu : un seul caractère peut changer.</p></details>
+      <details class="card p-5"><summary class="flex gap-3 items-start"><span class="num">3</span><span><strong class="text-lg">La pression</strong><br><span class="muted text-sm">Urgence artificielle, menace, délai très court.</span></span></summary>
+        <p class="mt-3 text-sm">« Compte bloqué sous 2 h », « colis détruit sous 24 h » : plus c’est pressant, plus il faut ralentir.</p></details>
+      <details class="card p-5"><summary class="flex gap-3 items-start"><span class="num">4</span><span><strong class="text-lg">La demande</strong><br><span class="muted text-sm">Mot de passe, code SMS ou numéro de carte par courriel.</span></span></summary>
+        <p class="mt-3 text-sm">Danger immédiat. Une organisation sérieuse ne vous demande pas ces informations par mail.</p></details>
+    </div>
+    <div class="rule mt-5">💡 Un logo propre et une bonne syntaxe ne prouvent rien.</div>
+  </section>
+
+  <!-- MODULE 3 -->
+  <section class="mt-14" id="module-3">
+    <span class="tag">Module 3 · ~6 min</span>
+    <h2 class="text-2xl md:text-3xl font-bold mt-2">Que faire en cas de doute ou après un clic</h2>
+    <p class="mt-3">Le piège ne marche que si vous restez dans le mail. Sortez-en, puis choisissez votre situation :</p>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card act g p-5"><h3 class="font-semibold">🤔 Un doute, pas de clic</h3><p class="text-sm mt-1">Ne cliquez pas. Ouvrez vous-même le site ou l’application officielle, puis signalez le mail.</p></div>
+      <div class="card act y p-5"><h3 class="font-semibold">🌐 Page ouverte, rien saisi</h3><p class="text-sm mt-1">Fermez immédiatement l’onglet.</p></div>
+      <div class="card act r p-5"><h3 class="font-semibold">🔑 Mot de passe saisi</h3><p class="text-sm mt-1">Changez-le tout de suite sur le vrai site, et partout où il est réutilisé.</p></div>
+      <div class="card act r p-5"><h3 class="font-semibold">💳 Carte bancaire communiquée</h3><p class="text-sm mt-1">Faites opposition sans délai auprès de votre banque.</p></div>
+    </div>
+    <div class="card p-5 mt-5 quiz">
+      <p class="font-semibold">Quiz · Vous doutez d’un mail de votre banque. Que faites-vous ?</p>
+      <button class="opt" data-ok="0" data-fb="Non : le lien peut mener au faux site.">A. Je clique sur le lien pour vérifier</button>
+      <button class="opt" data-ok="0" data-fb="Non : on ne répond pas à un mail suspect.">B. Je réponds au mail</button>
+      <button class="opt" data-ok="1" data-fb="Bravo ! Passer par un autre chemin casse le piège.">C. J’ouvre l’appli ou je tape moi-même l’adresse</button>
+      <div class="fb" role="status"></div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="mt-14 noprint" id="checklist">
+    <h2 class="text-2xl md:text-3xl font-bold">Checklist des 30 secondes</h2>
+    <div class="card p-5 mt-4">
+      <label class="flex gap-3 items-start py-2"><input type="checkbox" class="check"><span><strong>Expéditeur :</strong> l’adresse est complète et cohérente</span></label>
+      <label class="flex gap-3 items-start py-2"><input type="checkbox" class="check"><span><strong>Lien :</strong> l’adresse affichée est la bonne, sans cliquer</span></label>
+      <label class="flex gap-3 items-start py-2"><input type="checkbox" class="check"><span><strong>Pression :</strong> le mail ne me presse pas</span></label>
+      <label class="flex gap-3 items-start py-2"><input type="checkbox" class="check"><span><strong>Demande :</strong> on ne me demande ni mot de passe, ni code, ni carte</span></label>
+      <p id="prog" class="muted text-sm mt-3" role="status">0 / 4 vérifications cochées</p>
+      <button class="btn mt-4" onclick="window.print()">🖨️ Imprimer ou enregistrer la fiche réflexe en PDF</button>
+    </div>
+  </section>
+
+  <!-- Fiche imprimable -->
+  <section class="printonly">
+    <h1 style="font-size:22pt">Fiche réflexe : repérer un mail de phishing</h1>
+    <h2>Les 4 vérifications</h2>
+    <ol><li>Expéditeur : lire l’adresse complète.</li><li>Lien : voir l’adresse réelle sans cliquer.</li><li>Pression : urgence, menace, délai court.</li><li>Demande : mot de passe, code SMS ou carte = danger.</li></ol>
+    <h2>Si vous avez un doute</h2><p>Ne cliquez pas. Ouvrez vous-même le site ou l’application officielle. Signalez le mail.</p>
+    <h2>Si vous avez cliqué</h2>
+    <ul><li>Rien saisi : fermer l’onglet.</li><li>Mot de passe saisi : le changer partout où il est utilisé.</li><li>Carte communiquée : faire opposition auprès de la banque.</li></ul>
+    <p style="font-size:10pt">Sources : Cybermalveillance.gouv.fr</p>
+  </section>
+</main>
+
+<footer class="noprint" style="background:var(--navy);color:#E6ECF8">
+  <div class="max-w-4xl mx-auto px-5 py-8 text-sm text-center">
+    Mini-formation conçue dans le cadre du cours IA Advanced. Contenus, visuels et avatars réalisés avec l’assistance d’outils d’IA (Claude, Gemini, Vidnoz, HeyGen, CapCut). Recommandations conformes aux guides officiels de Cybermalveillance.gouv.fr et de la CNIL.
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.quiz').forEach(function(q){
+  var fb=q.querySelector('.fb');
+  q.querySelectorAll('.opt').forEach(function(b){
+    b.addEventListener('click',function(){
+      var ok=b.dataset.ok==='1';
+      fb.textContent=(ok?'✔ ':'✖ ')+b.dataset.fb;
+      fb.className='fb '+(ok?'ok':'ko');
+      b.classList.add(ok?'ok':'ko');
+      b.disabled=true;
+      if(ok){q.querySelectorAll('.opt').forEach(function(o){o.disabled=true});}
+    });
+  });
+});
+var boxes=document.querySelectorAll('.check'),prog=document.getElementById('prog');
+boxes.forEach(function(c){c.addEventListener('change',function(){
+  var n=document.querySelectorAll('.check:checked').length;
+  prog.textContent=n===4?'🎉 Bravo, les 4 vérifications sont cochées !':n+' / 4 vérifications cochées';
+});});
+</script>
+</body>
+</html>
